@@ -1,0 +1,37 @@
+# Ngôn ngữ sử dụng
+language: node_js
+
+# Các phiên bản Node.js cần kiểm tra
+node_js:
+  - 16
+
+# Chỉ định nhánh để chạy pipeline
+branches:
+  only:
+    - src
+services:
+  - docker
+# Cài đặt các dependencies trước khi chạy các lệnh test
+install:
+  - npm install
+
+# Lệnh chạy test
+script:
+  - npm run
+
+# Cấu hình cache để tăng tốc độ build
+cache:
+  directories:
+    - node_modules
+
+# Build và push image Docker sau khi test thành công
+after_success:
+  - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
+  - docker build -t linhhm9/udagram-frontend:latest .
+  - docker push linhhm9/udagram-frontend:latest
+  - docker build -t ./udagram-api-feed ./udagram-api-feed
+  - docker push udagram-api-feed
+  - docker build -t linhhm9/udagram-api-user:latest .
+  - docker push linhhm9/udagram-api-user:latest
+  - docker build -t linhhm9/udagram-reverseproxy:latest .
+  - docker push linhhm9/udagram-reverseproxy:latest
