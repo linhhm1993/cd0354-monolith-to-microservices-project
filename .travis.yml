@@ -17,7 +17,7 @@ services:
 
 # Build và push image Docker sau khi test thành công
 after_success:
-  #echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
+  echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
   - docker build -t udagram-frontend ./udagram-frontend
   - docker build -t udagram-api-feed ./udagram-api-feed
   - docker build -t udagram-api-user ./udagram-api-user
