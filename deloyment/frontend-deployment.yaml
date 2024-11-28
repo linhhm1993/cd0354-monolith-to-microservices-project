@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
         - name: frontend
-          image: docker.io/linhhm9/udagram-frontend:v10
+          image: docker.io/linhhm9/udagram-frontend:latest
           ports:
             - containerPort: 80
           resources:

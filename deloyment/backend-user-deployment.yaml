@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
         - name: backend-user
-          image: docker.io/linhhm9/udagram-api-user:v10
+          image: docker.io/linhhm9/udagram-api-user:latest
           imagePullPolicy: Always
           resources:
             requests:

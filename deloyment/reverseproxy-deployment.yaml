@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
         - name: reverseproxy
-          image: docker.io/linhhm9/reverseproxy:v10
+          image: docker.io/linhhm9/reverseproxy:latest
           ports:
             - containerPort: 8080
           resources:
