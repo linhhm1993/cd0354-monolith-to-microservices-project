@@ -1,20 +1,20 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: frontend
+  name: frontend-test
 spec:
   selector:
     matchLabels:
-      run: frontend
+      run: frontend-test
   replicas: 2
   template:
     metadata:
       labels:
-        run: frontend
+        run: frontend-test
     spec:
       containers:
-        - name: frontend
-          image: docker.io/linhhm9/udagram-frontend:latest
+        - name: frontend-test
+          image: dockerhub-linhhm9/udagram-frontend:latest1
           ports:
             - containerPort: 80
           resources:
